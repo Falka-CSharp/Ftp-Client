@@ -6,11 +6,18 @@ using System.Threading.Tasks;
 using System.IO;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Ftp_Client.Controllers;
+
 namespace Ftp_Client.ViewModel
 {
-    public class MainWindowViewModel :INotifyPropertyChanged
+    public class MainWindowViewModel : INotifyPropertyChanged
     {
+        public SecurityController SecurityCredentialsManager { get; set; }
 
+        public MainWindowViewModel()
+        {
+            SecurityCredentialsManager = new SecurityController();
+        }
 
 
 

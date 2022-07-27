@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Ftp_Client.ViewModel;
 
 namespace Ftp_Client.Views
 {
@@ -20,9 +21,12 @@ namespace Ftp_Client.Views
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static MainWindowViewModel mainModel { get; set; }
         public MainWindow()
         {
             InitializeComponent();
+            mainModel = new MainWindowViewModel();
+            this.DataContext = mainModel;
         }
     }
 }

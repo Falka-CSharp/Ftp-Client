@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ftp_Client"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        MinWidth="750"
+        MinHeight="200">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -13,13 +15,36 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.9*"/>
-            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.1*" MaxHeight="50px"/>
         </Grid.RowDefinitions>
 
         <ListView x:Name="ClientFiles" Grid.Column="0" ></ListView>
         <ListView x:Name="ServerFiles" Grid.Column="1" ></ListView>
 
-        <Border Grid.Row="1" Grid.ColumnSpan="2" BorderBrush="DarkSlateGray" BorderThickness="1"/>
+        <Border Grid.Row="1" Grid.ColumnSpan="2" BorderBrush="DarkSlateGray" BorderThickness="1">
+            <StackPanel Orientation="Horizontal" >
+                <StackPanel.Resources>
+                    <Style TargetType="TextBox">
+                        <Setter Property="Margin" Value="5px"/>
+                        <Setter Property="Width" Value="120px"/>
+                        <Setter Property="FontSize" Value="15pt"/>
+                    </Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Margin" Value="5px"/>
+                        <Setter Property="FontSize" Value="16pt"/>
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                    </Style>
+                </StackPanel.Resources>
+                <TextBlock>Host: </TextBlock>
+                <TextBox Text="{Binding Path=SecurityCredentialsManager.Host, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock>Login: </TextBlock>
+                <TextBox Text="{Binding Path=SecurityCredentialsManager.Username, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock>Password: </TextBlock>
+                <TextBox Width="120px" Margin="5px" FontSize="15pt" Text="{Binding Path=SecurityCredentialsManager.Password, UpdateSourceTrigger=PropertyChanged}"/>
+                <Button Content="Authorization" Margin="5px" FontSize="16pt"></Button>
+                
+            </StackPanel>
+        </Border>
     </Grid>
     
     
